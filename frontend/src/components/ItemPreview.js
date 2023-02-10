@@ -28,7 +28,6 @@ const ItemPreview = (props) => {
       props.favorite(item.slug);
     }
   };
-
   return (
     <div
       className="card bg-dark border-light p-3"
@@ -38,6 +37,9 @@ const ItemPreview = (props) => {
       <img
         alt="item"
         src={item.image}
+        onError={(e) => {
+          e.currentTarget.src = "./placeholder.png";
+        }}
         className="card-img-top item-img"
         style={{ borderRadius: "20px" }}
       />
@@ -50,6 +52,9 @@ const ItemPreview = (props) => {
           <Link to={`/@${item.seller.username}`} className="flex-grow-1">
             <img
               src={item.seller.image}
+              onError={(e) => {
+                e.currentTarget.src = "./placeholder.png";
+              }}
               alt={item.seller.username}
               className="user-pic rounded-circle pr-1"
             />
